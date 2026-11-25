@@ -36,11 +36,17 @@
         {{ product.price | money }}
       </p>
 
-     <add-to-cart variant-id="{{ product.selected_or_first_available_variant.id }}">
+{% if product.has_only_default_variant %}
+<add-to-cart variant-id="{{ product.selected_or_first_available_variant.id }}">
   <button type="button">
     Add to Cart
   </button>
-</add-to-cart>
+</add-to-cart>{% else %}
+  <a href="{{ product.url}}">
+    Select Options
+  </a>
+{% endif %}
+     
             </div>
 
         {% endfor %}
@@ -49,7 +55,20 @@
 
 <div class="add_success_popup_container">
     <div class="add_success_popup_data">
-        <button class="close_success_popup">close</button>
+
+        <button type="button" class="close_success_popup">
+            Close
+        </button>
+
+        <div class="added_item_info">
+            <img class="added_product_image" src="" alt="">
+
+            <h3 class="added_product_title"></h3>
+        </div>
+
+        <a href="#">Continue Shopping</a>
+        <a href="/cart">View Cart</a>
+
     </div>
 </div>
 
