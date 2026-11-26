@@ -102,7 +102,8 @@ if (this.button) {
     image.alt = data.product_title || data.title || '';
 
     // Set product title
-    title.textContent = data.product_title || data.title;
+  
+    title.textContent =   `You have added ${data.product_title} Blue to your shopping cart!`;
 
     // Show popup
     popup.classList.add('is-active');
