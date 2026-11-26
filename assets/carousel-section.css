@@ -158,3 +158,45 @@ h2.cart_count{
     font-size: 16px;
 }
 }
+
+
+.keen-slider-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.keen-slider-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.keen-slider-dot.active {
+  width: 22px;
+  border-radius: 10px;
+  background: #000;
+}
+
+/* Hide dots on desktop */
+.keen-slider-dots {
+  display: none;
+}
+
+/* Show dots on mobile */
+@media (max-width: 768px) {
+  .keen-slider-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+  }
+}

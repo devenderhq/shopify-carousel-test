@@ -57,6 +57,7 @@
 
         {% endfor %}
     </div>
+
      <button type="button" class="slider-next" aria-label="Next products">
         &#10095;
     </button>
@@ -80,48 +81,13 @@
             </div>
     </div>
 </div> 
+    <div class="keen-slider-dots"></div>
 
 </section>
+
+
+  
 <script src="https://cdn.jsdelivr.net/npm/keen-slider@latest/keen-slider.js"></script>
-
-
-  <script>
-  const slider = new KeenSlider(".keen-slider", {
-    loop: true,
-    slides: {
-        perView: 4,
-        spacing: 15,
-    },
-    breakpoints: {
-        "(max-width: 1024px)": {
-            slides: {
-                perView: 3,
-                spacing: 15,
-            },
-        },
-        "(max-width: 768px)": {
-            slides: {
-                perView: 2,
-                spacing: 15,
-            },
-        },
-        "(max-width: 480px)": {
-            slides: {
-                perView: 1,
-                spacing: 15,
-            },
-        },
-    },
-});
-
-document.querySelector(".slider-prev").addEventListener("click", () => {
-    slider.prev();
-});
-
-document.querySelector(".slider-next").addEventListener("click", () => {
-    slider.next();
-});
-  </script>
 
 {{ 'carousel-section.js' | asset_url | script_tag }}
 

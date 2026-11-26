@@ -157,3 +157,63 @@ document.addEventListener('cart:added', function(event) {
   }
 });
 
+
+
+  const sliderElement = document.querySelector(".keen-slider");
+const dotsContainer = document.querySelector(".keen-slider-dots");
+
+if (sliderElement) {
+  const slider = new KeenSlider(sliderElement, {
+    loop: true,
+    slides: {
+      perView: 4,
+      spacing: 15,
+    },
+    breakpoints: {
+      "(max-width: 1024px)": {
+        slides: { perView: 3, spacing: 15 },
+      },
+      "(max-width: 768px)": {
+        slides: { perView: 2, spacing: 15 },
+      },
+      "(max-width: 480px)": {
+        slides: { perView: 1, spacing: 15 },
+      },
+    },
+    created(instance) {
+      const dots = instance.track.details.slides.length;
+
+      for (let i = 0; i < dots; i++) {
+        const dot = document.createElement("button");
+        dot.classList.add("keen-slider-dot");
+
+        dot.addEventListener("click", () => {
+          instance.moveToIdx(i);
+        });
+
+        dotsContainer.appendChild(dot);
+      }
+
+      updateDots(instance);
+    },
+    slideChanged(instance) {
+      updateDots(instance);
+    },
+  });
+
+  function updateDots(instance) {
+    const currentSlide = instance.track.details.rel;
+
+    dotsContainer.querySelectorAll(".keen-slider-dot").forEach((dot, index) => {
+      dot.classList.toggle("active", index === currentSlide);
+    });
+  }
+
+  document.querySelector(".slider-prev")?.addEventListener("click", () => {
+    slider.prev();
+  });
+
+  document.querySelector(".slider-next")?.addEventListener("click", () => {
+    slider.next();
+  });
+}
