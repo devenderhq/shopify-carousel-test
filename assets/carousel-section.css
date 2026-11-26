@@ -104,6 +104,8 @@
     margin-bottom: 10px;
     margin-left: 10px;
     margin-right: 10px;
+    font-size: 14px;
+    font-weight: 100;
 }
 
 /* Added Item Information */
@@ -194,6 +196,12 @@
     .carousel_parent .carousel .add_success_popup_data .action_button {
         font-size: 16px;
     }
+    .carousel_parent .carousel add-to-cart button,
+.carousel_parent .carousel .selections_button {
+   
+   
+    font-size: 16px;
+}
 }
 
 /* Mobile Styles */
