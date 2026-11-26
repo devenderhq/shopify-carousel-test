@@ -140,3 +140,4 @@ document.addEventListener('cart:added', function(event) {
     cartCount.textContent = itemCount;
   }
 });
+

@@ -8,10 +8,15 @@
   {% assign selected_collection = collections[section.settings.collection] %}
 
 {% if selected_collection != blank %}
+
     <div class="collection-products">
+    <button type="button" class="slider-prev" aria-label="Previous products">
+        &#10094;
+    </button>
+    <div class="keen-slider">
         {% for product in selected_collection.products limit: section.settings.products_limit %}
 
-            <div class="product_card">
+            <div class="product_card keen-slider__slide">
                 <a href="{{ product.url }}">
         {% if product.featured_image %}
           <img
@@ -25,14 +30,14 @@
       </a>
 
       <!-- Product Title -->
-      <h3>
+      <h3 class="product_title">
         <a href="{{ product.url }}">
           {{ product.title }}
         </a>
       </h3>
 
       <!-- Product Price -->
-      <p class="product-price">
+      <p class="product_price">
         {{ product.price | money }}
       </p>
 
@@ -42,14 +47,20 @@
     Add to Cart
   </button>
 </add-to-cart>{% else %}
-  <a href="{{ product.url}}">
+  <a class="selections_button" href="{{ product.url}}">
     Select Options
   </a>
 {% endif %}
      
             </div>
+          
 
         {% endfor %}
+    </div>
+     <button type="button" class="slider-next" aria-label="Next products">
+        &#10095;
+    </button>
+
     </div>
 {% endif %}
 
@@ -73,9 +84,48 @@
 </div>
 
 </section>
+<script src="https://cdn.jsdelivr.net/npm/keen-slider@latest/keen-slider.js"></script>
 
 
-  {{ 'carousel-section.js' | asset_url | script_tag }}
+  <script>
+  const slider = new KeenSlider(".keen-slider", {
+    loop: true,
+    slides: {
+        perView: 4,
+        spacing: 15,
+    },
+    breakpoints: {
+        "(max-width: 1024px)": {
+            slides: {
+                perView: 3,
+                spacing: 15,
+            },
+        },
+        "(max-width: 768px)": {
+            slides: {
+                perView: 2,
+                spacing: 15,
+            },
+        },
+        "(max-width: 480px)": {
+            slides: {
+                perView: 1,
+                spacing: 15,
+            },
+        },
+    },
+});
+
+document.querySelector(".slider-prev").addEventListener("click", () => {
+    slider.prev();
+});
+
+document.querySelector(".slider-next").addEventListener("click", () => {
+    slider.next();
+});
+  </script>
+
+{{ 'carousel-section.js' | asset_url | script_tag }}
 
 {% schema %}
 {
