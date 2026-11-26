@@ -113,16 +113,31 @@ customElements.define('add-to-cart', AddToCart);
 
 
 // Close popup
+// document.addEventListener('click', function (event) {
+//   if (event.target.closest('.close_success_popup')) {
+//     const popup = document.querySelector('.add_success_popup_container');
+
+//     if (popup) {
+//       popup.classList.remove('is-active');
+//     }
+//   }
+// });
+
+
+// Close popup when clicking outside popup content
 document.addEventListener('click', function (event) {
-  if (event.target.closest('.close_success_popup')) {
     const popup = document.querySelector('.add_success_popup_container');
+    const popupContent = document.querySelector('.add_success_popup_data');
 
-    if (popup) {
-      popup.classList.remove('is-active');
+    if (!popup || !popupContent) return;
+
+    if (
+        popup.classList.contains('is-active') &&
+        !popupContent.contains(event.target)
+    ) {
+        popup.classList.remove('is-active');
     }
-  }
 });
-
 
 
 document.addEventListener('cart:added', function(event) {

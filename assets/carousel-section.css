@@ -23,18 +23,23 @@
 }
 
 .carousel_parent .add_success_popup_container .add_success_popup_data {
-    height: 300px;
+    height: fit-content;
     background: white;
-    width: 40%;
+    width: 90%;
 }
 
 .added_product_image{
-    height:240px;
+    height:auto;
+    width: 100px;
 }
 
 .product_card img{
     width: 100%;
     object-fit: contain;
+    max-height: 200px;
+    display: block;
+    /* margin-bottom: 30px; */
+    background: #fff;
 }
 
 .collection-products{
@@ -43,23 +48,29 @@
 
 .slider-next, .slider-prev{
     width: 40px;
+    border: 0;
+    background: #fff
 }
 
 .product_title a{
-    color: #000;
+   color: #000;
     text-decoration: none;
     text-align: center;
     font-size: 16px;
     display: block;
-    margin-bottom: 10px;
+    padding-bottom: 10px;
+    padding-top: 30px;
+    background: white;
+    
 }
 
-.product_price{
+.product_price {
     text-align: center;
     font-size: 16px;
     color: #000;
     font-weight: 100;
-    margin-bottom: 15px;
+    padding-bottom: 15px;
+    background: white;
 }
 
 add-to-cart button,.selections_button{
@@ -71,4 +82,79 @@ add-to-cart button,.selections_button{
     display: block;
     text-align: center;
     text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-bottom: 10px;
+    width: calc(100% - 20px);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.slider-next{
+    margin-left: 10px;
+}
+
+.slider-prev{
+    margin-right: 10px;
+}
+
+.added_item_info{
+    display: flex;
+    gap: 10px;
+}
+
+.add_success_popup_data .action_button{
+    width: 100%;
+    background: #000;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.add_success_popup_data .view_cart{
+    background: #c9ab32;
+}
+
+.add_success_popup_data .action_buttons{
+    display: flex;
+    gap: 10px;
+    padding:10px;
+}
+
+.added_product_title{
+    height: fit-content;
+    color: green;
+    font-weight: 100;
+}
+
+.added_item_info{
+    border-top: 5px solid #000;
+    padding-top: 20px;
+}
+
+.carousel_section_heading{
+    margin-bottom: 30px;
+}
+
+h2.cart_count{
+    margin-bottom: 50px
+}
+
+.product_card{
+    background: #fff;
+}
+
+@media(min-width:1024px){
+    .carousel_parent .add_success_popup_container .add_success_popup_data {
+    width: 50%;
+}
+.add_success_popup_data .action_button{
+    
+    font-size: 16px;
+}
 }
